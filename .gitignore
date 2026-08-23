@@ -1,0 +1,43 @@
+# ======================================================
+# Walter AI Toolkit
+# Git Ignore
+# ======================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+temp/
+*.tmp
+*.temp
+
+# Generated output
+output/
+
+# IDE
+.vscode/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Misc
+*.bak
+
+# Local files
+estructura_actual.txt
+# API keys / tokens guardados localmente (NUNCA subir esto)
+config/secrets.local.json
+TOken HF.txt
+TOken HF.txt

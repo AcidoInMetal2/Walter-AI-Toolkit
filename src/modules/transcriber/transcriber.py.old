@@ -1,0 +1,45 @@
+from pathlib import Path
+import subprocess
+
+
+class Transcriber:
+
+    def __init__(self):
+
+        self.whisper = Path(
+            r"C:\Whisper\venv\Scripts\whisper.exe"
+        )
+
+    def transcribir(
+        self,
+        audio,
+        salida="output/transcripciones",
+        modelo="medium",
+        idioma="Spanish"
+    ):
+
+        Path(salida).mkdir(parents=True, exist_ok=True)
+
+        comando = [
+
+            str(self.whisper),
+
+            audio,
+
+            "--model", modelo,
+
+            "--language", idioma,
+
+            "--device", "cuda",
+
+            "--output_dir", salida
+
+        ]
+
+        proceso = subprocess.run(
+            comando,
+            capture_output=True,
+            text=True
+        )
+
+        return proceso
