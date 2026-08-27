@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (
 
 from config.paths import TRANSCRIPTIONS_DIR
 from src.core.context import Context
+from src.core.time_utils import formatear_tiempo
 from src.modules.fileinfo.file_info import FileInfo
 from src.services.obsidian_service import ObsidianService
 from src.ui.drop_area import DropArea
@@ -693,6 +694,7 @@ class MainWindow(QMainWindow):
         mapa = self._mapa_nombres()
 
         texto = "\n\n".join(
+            f"[{formatear_tiempo(b['start'])} - {formatear_tiempo(b['end'])}] "
             f"[{mapa.get(b['speaker'], b['speaker'])}] {b['text']}"
             for b in bloques
         )

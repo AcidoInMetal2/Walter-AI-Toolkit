@@ -7,6 +7,7 @@ Responsabilidad única: no transcribe, no diariza. Solo combina lo que
 ya está en el Context.
 """
 from src.core.context import Context
+from src.core.time_utils import formatear_tiempo
 
 SPEAKER_DESCONOCIDO = "SPEAKER_DESCONOCIDO"
 
@@ -100,7 +101,11 @@ class TranscriptMerger:
 
     @staticmethod
     def _formatear(bloques: list[dict]) -> str:
-        return "\n\n".join(f"[{b['speaker']}] {b['text']}" for b in bloques)
+        return "\n\n".join(
+            f"[{formatear_tiempo(b['start'])} - {formatear_tiempo(b['end'])}] "
+            f"[{b['speaker']}] {b['text']}"
+            for b in bloques
+        )
 
     @staticmethod
     def _avisar(context: Context, mensaje: str):
